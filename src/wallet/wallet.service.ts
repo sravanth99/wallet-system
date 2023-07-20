@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
-import { Model, Connection, Schema, ObjectId } from 'mongoose';
+import { Connection, Model, ObjectId, Schema } from 'mongoose';
 import { TransactionService } from '../transaction';
 import { TransactionType, Wallet } from '../schemas';
 import {

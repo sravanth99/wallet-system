@@ -1,4 +1,4 @@
-import { registerDecorator, ValidationOptions } from 'class-validator';
+import { ValidationOptions, registerDecorator } from 'class-validator';
 
 export const StripWhitespace = <T>(validationOptions?: ValidationOptions) => {
   return (object: T, propertyName: string) => {

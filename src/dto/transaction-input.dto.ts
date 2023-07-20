@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Min, IsNumber, IsString, MinLength, IsEnum } from 'class-validator';
+import { IsEnum, IsNumber, IsString, Min, MinLength } from 'class-validator';
+
 import { TransactionType } from '../schemas';
 
 export class TransactionInputDto {

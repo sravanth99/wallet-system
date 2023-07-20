@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
-import { IsNumber, Min, IsString, MinLength } from 'class-validator';
+import { IsNumber, IsString, Min, MinLength } from 'class-validator';
 import { trimWhiteSpaces } from '../utils';
 
 export class WalletSetupDto {

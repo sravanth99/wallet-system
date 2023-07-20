@@ -3,9 +3,9 @@ import { NotFoundException } from '@nestjs/common';
 import { ObjectId } from 'mongoose';
 
 import {
-  WalletSetupDto,
   TransactionInputDto,
   TransactionResponseDto,
+  WalletSetupDto,
   WalletSetupResponseDto,
 } from '../dto';
 import { WalletController } from './wallet.controller';

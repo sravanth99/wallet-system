@@ -1,4 +1,4 @@
-import { PipeTransform, Injectable } from '@nestjs/common';
+import { Injectable, PipeTransform } from '@nestjs/common';
 
 @Injectable()
 export class StripWhitespacesPipe implements PipeTransform {

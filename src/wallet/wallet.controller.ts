@@ -1,10 +1,10 @@
 import {
-  Controller,
-  Post,
   Body,
+  Controller,
   Get,
-  Param,
   NotFoundException,
+  Param,
+  Post,
 } from '@nestjs/common';
 import {
   ApiBody,
@@ -15,7 +15,7 @@ import {
 } from '@nestjs/swagger';
 import { Schema } from 'mongoose';
 import { StripWhitespacesPipe } from '../pipes';
-import { validateObjectId } from '../utils/validate-object-id';
+import { validateObjectId } from '../utils';
 import {
   FetchWalletResponseDto,
   TransactionInputDto,
