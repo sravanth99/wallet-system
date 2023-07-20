@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # wallet-system
 Wallet Sytem BE Dev
 =======
@@ -25,47 +26,71 @@ Wallet Sytem BE Dev
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+=======
+# Wallet System
+>>>>>>> c32f4a7 (added readme.md)
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is a Nest.js project that provides a wallet management system with the following features:
+
+- **Setup wallet with an initial balance**
+
+  - User can setup a wallet, with some initial balance.
+  - Each wallet has a unique name ( caseInsensitive)
+
+- **Transactions (CREDIT or DEBIT)**
+
+  - User can perform transaction on the wallet.
+  - After every successful transaction wallet's balance is updated.
+
+- **Fetch wallet details**
+
+  - User can access the wallet details
+
+- **Fetch transactions of a wallet**
+  - User can access the transactions performed on a wallet.
+  - Transactions are sorting in descending order by date.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Installation
 
-```bash
-$ pnpm install
-```
+Follow these steps to set up the project locally:
 
-## Running the app
+1. Clone the repository: `git clone https://github.com/sravanth99/wallet-system.git`
+2. Navigate to the project directory: `cd wallet-system`
+3. Install dependencies: `pnpm install`
 
-```bash
-# development
-$ pnpm run start
+## Usage
 
-# watch mode
-$ pnpm run start:dev
+Follow these steps to run the project:
 
-# production mode
-$ pnpm run start:prod
-```
+1. Start the development server: `pnpm run start:dev`
+2. The server will be running at `http://localhost:3000`
 
-## Test
+## API Documentation
 
-```bash
-# unit tests
-$ pnpm run test
+The API documentation is generated using Swagger. To access the API documentation, run the project and visit `http://localhost:3000/api` in your web browser.
 
-# e2e tests
-$ pnpm run test:e2e
+## Technologies Used
 
-# test coverage
-$ pnpm run test:cov
-```
+- Nest.js: A progressive Node.js framework for building efficient and scalable server-side applications.
+- MongoDB: A popular NoSQL database for storing and managing wallet and transaction data.
+- Swagger: To automatically generate API documentation for the project.
 
-## Support
+## Note
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Due to my current work load, and time constraints I couldn't
 
+<<<<<<< HEAD
 ## Stay in touch
 
 - Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
@@ -76,3 +101,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 >>>>>>> 4338a75 (initial project setup and swagger integration)
+=======
+- complete optional UI part
+- cover e2e tests
+- address redundant code in few places
+- remove magic strings
+>>>>>>> c32f4a7 (added readme.md)
