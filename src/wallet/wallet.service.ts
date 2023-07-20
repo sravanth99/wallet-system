@@ -20,7 +20,7 @@ export class WalletService {
   constructor(
     @InjectModel(Wallet.name)
     private readonly walletModel: Model<Wallet>,
-    @InjectConnection('wallet') private readonly connection: Connection,
+    @InjectConnection() private readonly connection: Connection,
     private readonly transactionService: TransactionService,
   ) {}
 

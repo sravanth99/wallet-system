@@ -67,7 +67,7 @@ describe('WalletService', () => {
           useValue: mockWalletModel,
         },
         {
-          provide: getConnectionToken('wallet'),
+          provide: getConnectionToken(),
           useValue: {},
         },
         {
