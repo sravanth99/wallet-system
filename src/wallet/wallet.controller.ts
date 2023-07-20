@@ -23,7 +23,6 @@ import {
   WalletSetupDto,
   WalletSetupResponseDto,
 } from '../dto';
-import { Wallet } from '../schemas';
 import { WalletService } from './wallet.service';
 
 @ApiTags('Wallet')

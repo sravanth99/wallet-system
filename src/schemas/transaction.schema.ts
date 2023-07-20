@@ -6,6 +6,14 @@ import { TransactionType } from './tranasaction-type';
 
 @Schema()
 export class Transaction extends Document {
+  @ApiProperty({
+    description: 'id of the transaction',
+  })
+  id: string;
+
+  @ApiProperty({
+    description: 'updated balance of the wallet after successful transaction',
+  })
   @Prop({
     required: true,
     set: (val: number) => setPrecision(val),
@@ -46,6 +54,9 @@ export class Transaction extends Document {
   })
   type: string;
 
+  @ApiProperty({
+    description: 'date of transaction',
+  })
   @Prop({ default: () => new Date() })
   date: Date;
 }

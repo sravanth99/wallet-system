@@ -4,7 +4,7 @@ import {
   InternalServerErrorException,
   Query,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags, ApiBody, ApiQuery } from '@nestjs/swagger';
+import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
 import { TransactionService } from './transaction.service';
 import { FetchTransactionsInputDto } from '../dto';
 import { Transaction } from 'src/schemas';
@@ -16,6 +16,16 @@ export class TransactionController {
 
   @Get()
   @ApiOperation({ summary: 'Fetches transaction data for a given wallet' })
+  @ApiResponse({
+    status: 200,
+    description: 'Successfully fetched transactions',
+    type: Transaction,
+    isArray: true,
+  })
+  @ApiResponse({
+    status: 500,
+    description: 'Internal Server Error',
+  })
   async createTransaction(
     @Query() query: FetchTransactionsInputDto,
   ): Promise<Transaction[]> {
