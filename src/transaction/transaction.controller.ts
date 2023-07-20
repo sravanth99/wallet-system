@@ -7,7 +7,7 @@ import {
 import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
 import { TransactionService } from './transaction.service';
 import { FetchTransactionsInputDto } from '../dto';
-import { Transaction } from 'src/schemas';
+import { Transaction } from '../schemas';
 
 @Controller('transactions')
 @ApiTags('Transactions')

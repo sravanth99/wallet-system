@@ -20,7 +20,7 @@ export class WalletService {
   constructor(
     @InjectModel(Wallet.name)
     private readonly walletModel: Model<Wallet>,
-    @InjectConnection() private readonly connection: Connection,
+    @InjectConnection('wallet') private readonly connection: Connection,
     private readonly transactionService: TransactionService,
   ) {}
 
@@ -43,6 +43,7 @@ export class WalletService {
         } = await new this.walletModel(walletDto).save({
           session,
         });
+
         const { id: transactionId } =
           await this.transactionService.createTransaction(
             {
@@ -76,7 +77,6 @@ export class WalletService {
         throw err;
       }
     }
-
     return walletSetupResponse;
   }
 

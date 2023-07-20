@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ClientSession, Model } from 'mongoose';
-import { FetchTransactionsInputDto } from 'src/dto';
+import { FetchTransactionsInputDto } from '../dto';
 import { Transaction } from '../schemas';
 
 @Injectable()
