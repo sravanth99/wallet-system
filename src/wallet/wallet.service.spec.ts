@@ -1,15 +1,23 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { getConnectionToken, getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Connection, Model, ObjectId } from 'mongoose';
+import { ObjectId } from 'mongoose';
 import { TransactionService } from '../transaction';
 import { Transaction, TransactionType, Wallet } from '../schemas';
 import { WalletService } from './wallet.service';
-import { WalletSetupDto } from '../dto';
+import {
+  TransactionInputDto,
+  TransactionResponseDto,
+  WalletSetupDto,
+} from '../dto';
 
 const mockWalletModel = function () {};
 mockWalletModel.findById = jest.fn();
+mockWalletModel.findOne = jest.fn();
+mockWalletModel.session = jest.fn();
 mockWalletModel.exec = jest.fn();
+mockWalletModel.save = jest.fn();
+mockWalletModel.balance = 100;
 mockWalletModel.prototype.save = jest.fn();
 
 const walletId = '60330ce44329433a20f25d45' as unknown as ObjectId;
@@ -156,6 +164,47 @@ describe('WalletService', () => {
       );
       expect(transactionService.createTransaction).toHaveBeenCalledWith(
         expect.anything(),
+        expect.anything(),
+      );
+    });
+  });
+
+  describe('updateBalance', () => {
+    it('should update wallet balance and create transaction for CREDIT type', async () => {
+      const transactionInput: TransactionInputDto = {
+        amount: 50,
+        description: 'Credit transaction',
+        type: TransactionType.CREDIT,
+      };
+
+      mockWalletModel.findOne.mockReturnThis();
+      mockWalletModel.session.mockReturnThis();
+      mockWalletModel.save = jest.fn().mockResolvedValueOnce(mockWallet);
+      jest
+        .spyOn(transactionService, 'createTransaction')
+        .mockResolvedValueOnce(mockTransaction);
+
+      const result: TransactionResponseDto = await walletService.updateBalance(
+        mockWallet.id,
+        transactionInput,
+      );
+
+      expect(result).toEqual({
+        balance: mockTransaction.balance,
+        transactionId: walletId,
+      });
+      expect(mockWalletModel.findOne).toHaveBeenCalledWith({
+        _id: mockWallet.id,
+      });
+      expect(mockWalletModel.save).toHaveBeenCalled();
+      expect(transactionService.createTransaction).toHaveBeenCalledWith(
+        {
+          walletId: mockWallet.id,
+          amount: transactionInput.amount,
+          balance: mockWallet.balance,
+          description: transactionInput.description,
+          type: TransactionType.CREDIT,
+        },
         expect.anything(),
       );
     });
