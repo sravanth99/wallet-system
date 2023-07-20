@@ -26,7 +26,7 @@ export class TransactionController {
     status: 500,
     description: 'Internal Server Error',
   })
-  async createTransaction(
+  async fetchTransactions(
     @Query() query: FetchTransactionsInputDto,
   ): Promise<Transaction[]> {
     try {
