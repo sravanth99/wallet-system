@@ -16,6 +16,9 @@ export class TransactionService {
 
     return this.transactionModel
       .find({ walletId })
+      .sort({
+        date: 'desc',
+      })
       .skip(skip)
       .limit(limit)
       .exec();
