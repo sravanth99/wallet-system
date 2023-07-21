@@ -11,6 +11,11 @@ export class TransactionService {
     private readonly transactionModel: Model<Transaction>,
   ) {}
 
+  /**
+   * Fetches a list of transactions associated with a specific wallet in descedning order by date of transaction.
+   * @param {FetchTransactionsInputDto} query - `(walletId, limit, and skip)` The query parameters for fetching transactions.
+   * @returns {Promise<Transaction[]>} - A promise that resolves to an array of Transaction documents representing the fetched transactions.
+   */
   fetchTransactions(query: FetchTransactionsInputDto) {
     const { walletId, skip, limit } = query;
 
@@ -24,6 +29,12 @@ export class TransactionService {
       .exec();
   }
 
+  /**
+   * Creates a new transaction associated with a specific wallet.
+   * @param {Partial<Transaction>} transactionInputDto - The transaction details to be saved.
+   * @param {ClientSession} [session] - Optional Mongoose ClientSession for transaction support.
+   * @returns {Promise<Transaction>} - A promise that resolves to the newly created Transaction document representing the transaction.
+   */
   createTransaction(
     transactionInputDto: Partial<Transaction>,
     session?: ClientSession,

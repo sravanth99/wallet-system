@@ -1,9 +1,10 @@
 import { ClientSession, Connection } from 'mongoose';
 
 /**
- * Utility function to create a session
- * @param connection mongoose connection
- * @returns {ClientSession} client session
+ * Utility function to create a new Mongoose client session.
+ * @param {Connection} connection - The Mongoose connection to use for creating the session.
+ * @returns {Promise<{ session: ClientSession; closeConnection: ()  => Promise<void>}>}
+ *  A promise that resolves to an object containing the new client session and a function to close the connection.
  */
 export const getSession = async (
   connection: Connection,
