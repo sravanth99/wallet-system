@@ -24,10 +24,21 @@ export class WalletService {
     private readonly transactionService: TransactionService,
   ) {}
 
+  /**
+   * Retrieves a wallet by its ID.
+   * @param {Schema.Types.ObjectId} walletId - The ID of the wallet.
+   * @returns {Promise<Wallet | null>} - A promise that resolves to the found Wallet document or null if not found.
+   */
   async getWalletById(walletId: Schema.Types.ObjectId): Promise<Wallet | null> {
     return this.walletModel.findById(walletId).exec();
   }
 
+  /**
+   * Creates a new wallet with the provided initial balance and performs a credit transaction.
+   * @param {WalletSetupDto} walletDto - The data for setting up the new wallet.
+   * @returns {Promise<WalletSetupResponseDto>} - A promise that resolves to the setup response containing the wallet ID, balance, and transaction ID.
+   * @throws {ForbiddenException} - If the wallet name already exists.
+   */
   async createWallet(
     walletDto: WalletSetupDto,
   ): Promise<WalletSetupResponseDto> {
@@ -80,6 +91,14 @@ export class WalletService {
     return walletSetupResponse;
   }
 
+  /**
+   * Updates the balance of a wallet and creates a new transaction based on the transaction input.
+   * @param {ObjectId} walletId - The ID of the wallet to update the balance.
+   * @param {TransactionInputDto} transactionInput - The transaction details (amount, description, and type).
+   * @returns {Promise<TransactionResponseDto>} - A promise that resolves to the transaction response containing the updated balance and transaction ID.
+   * @throws {NotFoundException} - If the wallet is not found.
+   * @throws {ForbiddenException} - If there are insufficient funds for the transaction.
+   */
   async updateBalance(
     walletId: ObjectId,
     transactionInput: TransactionInputDto,
