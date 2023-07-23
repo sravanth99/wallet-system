@@ -13,7 +13,6 @@ export const getSession = async (
   closeConnection: () => Promise<void>;
 }> => {
   const client = connection.getClient();
-  await client.connect();
   const session = client.startSession({
     defaultTransactionOptions: {
       readPreference: 'primary',

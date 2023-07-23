@@ -42,7 +42,7 @@ export class WalletService {
   async createWallet(
     walletDto: WalletSetupDto,
   ): Promise<WalletSetupResponseDto> {
-    const { session, closeConnection } = await getSession(this.connection);
+    const { session } = await getSession(this.connection);
     let walletSetupResponse: WalletSetupResponseDto;
     try {
       await session.withTransaction(async () => {
@@ -76,7 +76,6 @@ export class WalletService {
         };
       });
     } catch (err) {
-      await closeConnection();
       if (err instanceof Error) {
         const { message } = err;
         if (
@@ -103,7 +102,7 @@ export class WalletService {
     walletId: ObjectId,
     transactionInput: TransactionInputDto,
   ): Promise<TransactionResponseDto> {
-    const { session, closeConnection } = await getSession(this.connection);
+    const { session } = await getSession(this.connection);
     let transactionResponse: TransactionResponseDto;
 
     try {
@@ -138,7 +137,6 @@ export class WalletService {
         };
       });
     } catch (err: unknown) {
-      await closeConnection();
       if (err instanceof Error) {
         const { name } = err;
         if (name === 'ValidationError') {
