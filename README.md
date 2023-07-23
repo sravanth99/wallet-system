@@ -9,7 +9,7 @@ The Wallet and Transaction Management System is a web application that allows us
 - **Setup wallet with an initial balance**
 
   - User can setup a wallet, with some initial balance.
-  - Each wallet has a unique name ( caseInsensitive)
+  - Each wallet has a unique name ( caseSensitive)
 
 - **Transactions (CREDIT or DEBIT)**
 
