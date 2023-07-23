@@ -72,7 +72,7 @@ export class WalletController {
   }
 
   @Post('/transact/:walletId')
-  @ApiOperation({ summary: 'Perform transaction (CREIDT/DEBIT) on a wallet' })
+  @ApiOperation({ summary: 'Perform transaction (CREDIT/DEBIT) on a wallet' })
   @ApiParam({ name: 'walletId', type: String })
   @ApiBody({ type: TransactionInputDto })
   @ApiResponse({
